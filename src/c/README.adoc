@@ -10,9 +10,6 @@
 
 |ファイル名|内容
 
-|RTCbuild.sh
-|The Macroassembler AS用ビルドスクリプト
-
 |RTCI.C
 |RTC初期化プログラム
 
