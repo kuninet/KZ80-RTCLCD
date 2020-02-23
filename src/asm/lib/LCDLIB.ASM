@@ -2,11 +2,16 @@
 ; LCD SC1602 Library for KZ80-IOB
 ;                     KUNI-NET 2020
 ;
-PPI_BASE EQU  0C0h
-PPI_A    EQU  PPI_BASE+0
-PPI_B    EQU  PPI_BASE+1
-PPI_C    EQU  PPI_BASE+2
-PPI_CTL  EQU  PPI_BASE+3
+;
+;---------------------------------
+; 8255PPI Initialize ROUTINE
+;---------------------------------
+LCD_PPI_INIT:
+        CALL PPI_INIT ; COMMON.ASM
+        CALL LCD_E_OFF
+        CALL LCD_RW_WRITE
+        RET
+
 ;
 ;---------------------------------
 ; LCD PRINT ROUTINE
@@ -16,23 +21,11 @@ PPI_CTL  EQU  PPI_BASE+3
 ;---------------------------------
 LCD_PRINT:
         LD B,16
-LOOP:
+.LOOP:
         LD A,(HL)
         CALL LCD_CHROUT
         INC HL
-        DJNZ LOOP
-        RET
-;
-;---------------------------------
-; 8255PPI Initialize　ROUTINE
-;---------------------------------
-PPI_INIT:
-        LD  A,10000000b   ; PORT-A OUT/PORT-B OUT/PORT-C OUT
-        OUT PPI_CTL,A
-        LD   A,0FFh
-        OUT  (PPI_C),A
-        CALL LCD_E_OFF
-        CALL LCD_RW_WRITE
+        DJNZ .LOOP
         RET
 ;
 ;---------------------------------
@@ -45,7 +38,7 @@ LCD_INIT:
         CALL LCD_CTLOUT
         LD A,01h
         CALL LCD_CTLOUT
-        CALL WAIT
+        CALL LCD_WAIT
         RET
 ;
 ;---------------------------------
@@ -82,7 +75,7 @@ LCD_CTLOUT:
         CALL LCD_RW_WRITE
         CALL LCD_E_ON
 ;
-        CALL WAIT
+        CALL LCD_WAIT
 ;
         CALL LCD_E_OFF
         RET
@@ -100,7 +93,7 @@ LCD_CHROUT:
         CALL LCD_RW_WRITE
         CALL LCD_E_ON
 ;
-        CALL WAIT
+        CALL LCD_WAIT
 ;
         CALL LCD_E_OFF
         RET
@@ -112,18 +105,18 @@ LCD_CHROUT:
 ; PARAMETER:
 ;  A    OUTPUT CHAR
 ;---------------------------------
-WAIT:
+LCD_WAIT:
         PUSH BC
         LD C,3
-W_LOOP1:
+LCD_W_LOOP1:
         LD B,255
-W_LOOP:
+LCD_W_LOOP:
         NOP
-        DJNZ W_LOOP
+        DJNZ LCD_W_LOOP
         DEC C
-        JR Z,W_EXIT
-        JR  W_LOOP1
-W_EXIT:
+        JR Z,LCD_W_EXIT
+        JR  LCD_W_LOOP1
+LCD_W_EXIT:
         POP BC
         RET
 ;---------------------------------

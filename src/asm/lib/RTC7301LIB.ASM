@@ -3,12 +3,6 @@
 ;                   KUNI-NET 2020
 ;
 
-PPI_BASE EQU  0C0h
-PPI_A    EQU  PPI_BASE+0
-PPI_B    EQU  PPI_BASE+1
-PPI_C    EQU  PPI_BASE+2
-PPI_CTL  EQU  PPI_BASE+3
-
 ;
 ;----------------------------------------------
 ; RTC7301DG Initialize (for Fos bit ON)
@@ -53,13 +47,6 @@ RTC_INIT:
         CALL RTC_BANK0
         POP BC
         POP AF
-        RET
-;
-;----------------------------------------------
-; 8255PPI Initialize 
-;----------------------------------------------
-PPI_INIT:
-        CALL PPI_B_OUT
         RET
 ;
 ;----------------------------------------------

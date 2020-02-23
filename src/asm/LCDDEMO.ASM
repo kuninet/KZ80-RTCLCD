@@ -12,7 +12,7 @@
         LD  HL,SMSG
         CALL STRPR
 ;
-        CALL PPI_INIT
+        CALL LCD_PPI_INIT
         CALL LCD_INIT
         LD HL,OUTMSG1
         CALL LCD_PRINT
@@ -31,14 +31,15 @@
 ;-------------------------------------
 ; Lib Include
 ;-------------------------------------
+        include "lib/COMMON.ASM"
         include "lib/LCDLIB.ASM"
         include "lib/KZ80MONLIB.ASM"
 
 ;-------------------------------------
 ; WORK AREA
 ;-------------------------------------
-SMSG    DB "*** LCD DEMO START ***",CR,LF,0
-EMSG    DB "*** LCD DEMO END ***",CR,LF,0
+SMSG    DB "*** LCD DEMO START ***",CR,0
+EMSG    DB "*** LCD DEMO END ***",CR,0
 ;
 OUTMSG1 DB "Hello LCD SC1602"
 OUTMSG2 DB "for KZ80-RTCLCD!"

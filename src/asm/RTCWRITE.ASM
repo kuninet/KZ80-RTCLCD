@@ -10,7 +10,7 @@
         LD   HL,SMSG
         CALL STRPR
 ;
-        CALL PPI_INIT
+        CALL PPI_B_OUT
         CALL RTC_BANK0
 ;
 ; INPUT PARAM GET
@@ -80,6 +80,7 @@ ERROREND:
 ;-----------------------------------------
 ; Library Include
 ;-----------------------------------------
+        include "lib/COMMON.ASM"
         include "lib/RTC7301LIB.ASM"
         include "lib/KZ80MONLIB.ASM"
 

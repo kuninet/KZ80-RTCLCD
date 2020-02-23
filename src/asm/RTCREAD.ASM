@@ -7,7 +7,7 @@
         LD  HL,SMSG
         CALL STRPR
 ;
-        CALL PPI_INIT
+        CALL PPI_B_OUT
 ;
 ; Work Area Initialize
 ;
@@ -99,6 +99,7 @@ LOOP_EXIT:
 ;-----------------------------------------
 ; Library Include
 ;-----------------------------------------
+        include "lib/COMMON.ASM"
         include "lib/RTC7301LIB.ASM"
         include "lib/KZ80MONLIB.ASM"
 

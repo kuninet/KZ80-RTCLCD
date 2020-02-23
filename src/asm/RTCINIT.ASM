@@ -16,6 +16,7 @@
 ;---------------------------------------
 ; Library Include
 ;---------------------------------------
+        include "lib/COMMON.ASM"
         include "lib/RTC7301LIB.ASM"
         include "lib/KZ80MONLIB.ASM"
         
