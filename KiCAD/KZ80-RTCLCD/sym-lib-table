@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name KZ80-RTCLCD-rescue)(type Legacy)(uri ${KIPRJMOD}/KZ80-RTCLCD-rescue.lib)(options "")(descr ""))
+)

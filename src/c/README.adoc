@@ -1,0 +1,32 @@
+= サンプルソース(HiTech-C CP/M-80)
+
+== 概要
+* KZ80マイコン用 キャラクタLCD/時計IC RTC-7301DGボードのHiTech-C CP/M-80版サンプルプログラムです。
+
+
+=== 時計IC RTC-7301DG用
+
+|===
+
+|ファイル名|内容
+
+|RTCbuild.sh
+|The Macroassembler AS用ビルドスクリプト
+
+|RTCI.C
+|RTC初期化プログラム
+
+|RTCW.C
+|RTC日時設定プログラム
+
+|RTCRD.C
+|RTC日時表示プログラム
+
+|===
+
+== コンパイル方法
+* KZ80上などのCP/M-80環境に、XMODEM等でソース・ファイルを転送して、以下のHiTech-Cのコマンドを実施してください。
+
+----
+> C ファイル名
+----

@@ -1,0 +1,44 @@
+= サンプルソース(Z80 ASM)
+
+== 概要
+* KZ80マイコン用 キャラクタLCD/時計IC RTC-7301DGボードのZ80アセンブラ版サンプルプログラムです。
+
+=== キャラクタLCD用
+|===
+|ファイル名|内容
+
+|LCDbuild.sh
+|The Macroassembler AS用ビルドスクリプト
+
+|LCDDEMO.ASM
+|キャラクタLCDに固定文字列を表示するデモ
+
+|===
+
+
+=== 時計IC RTC-7301DG用
+
+|===
+
+|ファイル名|内容
+
+|RTCbuild.sh
+|The Macroassembler AS用ビルドスクリプト
+
+|RTCINIT.ASM
+|RTC 初期化プログラム
+
+|RTCWRITE.ASM
+|RTC 日時書き込みプログラム +
+KZ80機械語モニター用です。入力パラメーターは15桁数字を指定してください。 +
+書式 : YYYYMMDDyHHMMSS +
+(YYYY:年/MM:月/DD:日/y:曜日(0:日曜、1:月曜...6:土曜)/HH:時/MM:分/DD:秒)
+
+|RTCRD.ASM
+|RTC 日時読み取りプログラム
+
+|===
+
+== アセンブラ
+* Mac上のThe Macroassembler ASを使用しています。Windowsでこのアセンブラを使用する場合は、ビルドスクリプトのASL→ASWと適宜読み替えてください。
+** http://john.ccac.rwth-aachen.de:8000/as/

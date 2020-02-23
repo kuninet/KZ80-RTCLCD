@@ -1,0 +1,6 @@
+= KZ80マイコン用 キャラクタLCD(SC1602)/時計IC(RTC-7301DG)ボード
+
+== 概要
+* KZ80マイコンのKZ80-IOBに接続する、キャラクタLCD(SC1602)/時計IC(RTC-7301DG)ボードです。
+
+image:img/IMG1.jpg[]
